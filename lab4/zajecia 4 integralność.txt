@@ -1,0 +1,41 @@
+-- tabela Klienci
+-- tabela Wojewodztwa
+-- tabela Miasta
+
+tabela Klienci
+---------------
+klientID int identity not null PK
+Nazwisko varchar(?) not null
+Imie varchar (?) not null
+PESEL char(11) null UNIQUE (ile rekordów mo¿na do³o¿yæ z wart. NULL)
+Data_ur date (lub datetime) null
+Data_zatr date (lub datetime) DEFAULT bie¿¹ca data
+Pensja money default 0 + CHECK (pensja >=0) not null
+Pensja_roczna - pole obliczne na podstawie pola Pensja *12 (automatycznie wype³niane)
+Ulica varchar null
+Numer varchar null
+Mieszkania integer NULL
+MiastoID int FK (Miasta[MiastoID])
+--aby data_ur < data_zatr (CHECK)
+
+Tabela Miasta
+-------------
+MiastoID int identity not null --PK
+Nazwa varchar(30) not null
+WojewodztwoID int FK (Wojewodztwa[WojewodztwoID])
+
+Tabela Wojewodztwa
+-------------
+WojewodztwoID int identity not null --PK
+Nazwa varchar(30) not null
+Aktywne bit (0,1) default 1
+
+
+1. Do³o¿yæ do tabeli wojewodztwa pole Kraj varchar(20) null
+2. Dodaæ rekordy wype³niæ danymi w tej kolumnie
+3. Zmieniæ NULL na NOT NULL
+4. Zmieniæ typ danych kraj na VARCHAR(5) -- nie spe³nia warunków
+5. Zmieniæ typ danych kraj na VARCHAR(35)
+6. Zmieniæ nazwê kolumny Aktywne na Active
+7. Zmieniæ kolejnoœæ kolumn
+-------------------------
